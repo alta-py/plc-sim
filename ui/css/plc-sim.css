@@ -1,0 +1,186 @@
+/* ═══════════════════════════════════════════════════
+   PLC Simulator — Styles
+   ═══════════════════════════════════════════════════ */
+
+.plc-main {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* ── Section ── */
+.plc-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.plc-sec-hdr {
+  padding: 8px 12px;
+  background: #fafbfc;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.plc-sec-icon {
+  width: 22px; height: 22px; border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+
+.plc-sec-title { font-size: 12px; font-weight: 600; color: var(--text); }
+.plc-sec-sub   { font-size: 10px; color: var(--text3); }
+
+.plc-sec-count {
+  margin-left: auto;
+  background: #f0f2f5; color: var(--text2);
+  font-size: 10px; padding: 1px 8px; border-radius: 10px; font-weight: 500;
+}
+.plc-sec-count.err { background: #fef2f2; color: var(--red); }
+
+.plc-sec-hdr-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+.plc-sec-body   { padding: 10px 12px; }
+
+.plc-sec-footer {
+  padding: 7px 12px; border-top: 1px solid #f0f2f5;
+  display: flex; gap: 6px; align-items: center;
+}
+
+.plc-max-hint { margin-left: auto; font-size: 10px; color: var(--text3); }
+
+/* ── Bits grid ── */
+.plc-bits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 5px;
+}
+
+.plc-bit-row {
+  display: flex; align-items: center; gap: 7px;
+  padding: 5px 8px; background: #f8f9fb;
+  border: 1px solid var(--border); border-radius: 5px;
+  border-left: 3px solid var(--green);
+}
+.plc-bit-row.err { border-left-color: var(--red); background: #fff8f8; }
+
+.plc-bit-addr {
+  font-family: monospace; font-size: 10px; color: var(--text2);
+  width: 44px; flex-shrink: 0;
+}
+.plc-bit-addr.err { color: var(--red); }
+
+.plc-bit-label {
+  flex: 1; border: none; background: transparent;
+  font-size: 11px; color: var(--text); outline: none;
+  border-bottom: 1px solid transparent;
+}
+.plc-bit-label:focus { border-bottom-color: var(--blue); }
+
+.plc-rw-sel {
+  font-size: 9px; border: 1px solid var(--border); border-radius: 3px;
+  background: #fff; color: var(--text2); padding: 1px 3px; width: 38px;
+}
+
+.plc-bit-val { font-size: 10px; font-weight: 700; width: 26px; text-align: center; flex-shrink: 0; }
+.plc-bit-val.on  { color: var(--green); }
+.plc-bit-val.off { color: var(--text3); }
+
+/* ── Register table ── */
+.plc-reg-tbl { width: 100%; border-collapse: collapse; }
+.plc-reg-tbl th {
+  font-size: 10px; font-weight: 600; color: var(--text3);
+  text-align: left; padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+.plc-reg-tbl td { padding: 5px 8px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+.plc-reg-tbl tr:last-child td { border-bottom: none; }
+.plc-reg-tbl tr:hover td { background: #f8f9fb; }
+.plc-row-err td { background: #fff8f8 !important; }
+
+.plc-addr-b {
+  font-family: monospace; font-size: 10px;
+  background: #f0f2f5; color: var(--text2);
+  padding: 2px 6px; border-radius: 4px; display: inline-block;
+}
+.plc-addr-b.err { background: #fef2f2; color: var(--red); }
+
+.plc-type-sel {
+  font-size: 10px; border: 1px solid var(--border); border-radius: 4px;
+  background: #fff; color: var(--text2); padding: 2px 4px;
+}
+
+.plc-label-inp {
+  border: none; background: transparent; font-size: 12px;
+  color: var(--text); outline: none; width: 130px;
+  border-bottom: 1px solid transparent;
+}
+.plc-label-inp:focus { border-bottom-color: var(--blue); }
+
+.plc-val-cur { font-size: 12px; font-weight: 600; color: var(--text); min-width: 65px; text-align: right; display: inline-block; }
+.plc-val-hex { font-family: monospace; font-size: 10px; color: var(--text2); }
+.plc-val-bin { font-family: monospace; font-size: 9px; color: #9aaabb; }
+
+.plc-new-val {
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 3px 7px; font-size: 11px; width: 85px; text-align: right;
+}
+.plc-new-val:focus { outline: none; border-color: var(--blue); }
+
+.plc-byte-sel {
+  font-size: 11px; border: 1px solid var(--border); border-radius: 4px;
+  padding: 3px 6px; background: #fff;
+}
+
+.btn-sm { padding: 2px 8px; font-size: 10px; }
+
+/* ── Signal table ── */
+.plc-sig-tbl { width: 100%; border-collapse: collapse; }
+.plc-sig-tbl th {
+  font-size: 10px; font-weight: 600; color: var(--text3);
+  text-align: left; padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+.plc-sig-tbl td { padding: 5px 8px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; }
+.plc-sig-tbl tr:last-child td { border-bottom: none; }
+
+.plc-run-ind { display: flex; align-items: center; gap: 4px; }
+.plc-run-dot { width: 7px; height: 7px; border-radius: 50%; }
+.plc-run-dot.running { background: var(--green); animation: sdot-pulse 1.2s infinite; }
+.plc-run-dot.stopped { background: #c0cad4; }
+.plc-run-lbl { font-size: 10px; font-weight: 600; }
+.plc-run-lbl.running { color: var(--green); }
+.plc-run-lbl.stopped { color: var(--text3); }
+
+.plc-sig-type-sel {
+  font-size: 10px; border: 1px solid var(--border); border-radius: 4px;
+  background: #fff; color: var(--text2); padding: 2px 4px;
+}
+
+.plc-params-cell { white-space: nowrap; }
+
+.plc-chip {
+  background: #f0f2f5; border-radius: 4px;
+  padding: 1px 6px; font-family: monospace;
+  font-size: 10px; color: var(--text2);
+  display: inline-block; margin-right: 3px;
+}
+
+/* Signal type colors */
+.sig-sine     { color: #0066FF; }
+.sig-square   { color: #16a34a; }
+.sig-triangle { color: #b45309; }
+.sig-ramp     { color: #7c3aed; }
+.sig-walk     { color: #9333ea; }
+.sig-blink    { color: #dc2626; }
+.sig-blink-f  { color: #c95f00; }
+.sig-blink-s  { color: #15803d; }
+.sig-counter  { color: #0891b2; }
+.sig-step     { color: #9333ea; }

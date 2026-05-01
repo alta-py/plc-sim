@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';" />
+  <title>Synkro Dev Tools</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/plc-sim.css" />
+  <link rel="stylesheet" href="css/modbus-tester.css" />
+  <link rel="stylesheet" href="css/iot-sim.css" />
+</head>
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="logo-box">S</div>
+      <div class="brand-text">
+        <div class="brand-name">Synkro Dev Tools</div>
+        <div class="brand-sub">Alta Ingeniería SRL · v1.0.0</div>
+      </div>
+    </div>
+
+    <nav class="header-tabs" id="headerTabs">
+      <button class="htab active" data-tab="plc-sim">
+        🖥 PLC Simulator
+      </button>
+      <button class="htab" data-tab="modbus-tester">
+        🔌 Modbus Tester
+      </button>
+      <button class="htab" data-tab="iot-sim">
+        📡 IoT Simulator
+      </button>
+    </nav>
+
+    <!-- Dynamic header controls — injected by each tab JS -->
+    <div class="header-controls" id="headerControls"></div>
+  </header>
+
+  <!-- ══ TAB CONTENT ══ -->
+  <main class="app-main">
+
+    <div class="tab-panel active" id="tab-plc-sim">
+      <!-- PLC Simulator UI injected by plc-sim.js -->
+    </div>
+
+    <div class="tab-panel" id="tab-modbus-tester">
+      <!-- Modbus Tester UI injected by modbus-tester.js -->
+    </div>
+
+    <div class="tab-panel" id="tab-iot-sim">
+      <!-- IoT Simulator UI injected by iot-sim.js -->
+    </div>
+
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/plc-sim.js"></script>
+  <script src="js/modbus-tester.js"></script>
+  <script src="js/iot-sim.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+/* ═══════════════════════════════════════════════════
+   Modbus Tester — Styles
+   ═══════════════════════════════════════════════════ */
+
+.mb-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 12px;
+  padding: 12px 14px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mb-left  { display: flex; flex-direction: column; gap: 0; overflow-y: auto; }
+.mb-right { display: flex; flex-direction: column; gap: 0; overflow: hidden; }
+
+/* ── Connection status ── */
+.mb-conn-status {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 10px; border-radius: 5px;
+  font-size: 11px; font-weight: 500; margin-top: 8px; margin-bottom: 6px;
+}
+.mb-conn-status.connected    { background: #f0fdf4; color: var(--green); border: 1px solid #bbf7d0; }
+.mb-conn-status.disconnected { background: #f8f9fb; color: var(--text3); border: 1px solid var(--border); }
+
+.mb-btn-connect {
+  width: 100%; padding: 7px; border: none; border-radius: 5px;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+  background: var(--blue); color: #fff; font-family: var(--font);
+}
+.mb-btn-connect.disconn { background: var(--red); }
+
+/* ── Profiles ── */
+.mb-profile-list { display: flex; flex-direction: column; gap: 4px; }
+
+.mb-profile-item {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px; border: 1px solid var(--border);
+  border-radius: 5px; cursor: pointer; background: #fafbfc;
+}
+.mb-profile-item:hover { background: #f0f4ff; border-color: #c0d0f0; }
+
+.mb-profile-dot  { width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+.mb-profile-name { font-size: 11px; font-weight: 500; color: var(--text); }
+.mb-profile-meta { font-size: 9px; color: var(--text3); }
+.mb-profile-del  { background: none; border: none; color: var(--text3); cursor: pointer; padding: 0 3px; font-size: 11px; }
+.mb-profile-del:hover { color: var(--red); }
+
+/* ── Scan ── */
+.mb-scan-results {
+  background: #f8f9fb; border-radius: 5px;
+  padding: 6px 8px; min-height: 50px;
+  margin-top: 6px; display: flex; flex-direction: column; gap: 4px;
+}
+
+.mb-scan-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px;
+}
+.mb-scan-ip { font-family: monospace; color: var(--text); font-weight: 500; flex: 1; }
+.mb-scan-ms { font-size: 10px; color: var(--green); }
+
+/* ── Read/Write card ── */
+.mb-rw-card { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+.mb-rw-tabs {
+  display: flex; border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.mb-rw-tab {
+  padding: 8px 16px; font-size: 11px; font-weight: 500;
+  color: var(--text2); cursor: pointer;
+  border: none; background: transparent;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  font-family: var(--font);
+}
+.mb-rw-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+.mb-rw-panel { display: none; flex: 1; overflow-y: auto; }
+.mb-rw-panel.active { display: flex; flex-direction: column; }
+
+.mb-rw-body { padding: 12px; }
+
+/* ── Read grid ── */
+.mb-read-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-bottom: 10px;
+}
+
+.mb-field { display: flex; flex-direction: column; gap: 3px; }
+.mb-field label { font-size: 10px; color: var(--text2); }
+
+.mb-read-actions {
+  display: flex; gap: 6px; align-items: center;
+  margin-bottom: 10px;
+}
+
+/* ── Results table ── */
+.mb-results-wrap { overflow-x: auto; }
+
+.mb-results-tbl { width: 100%; border-collapse: collapse; }
+.mb-results-tbl th {
+  font-size: 10px; font-weight: 600; color: var(--text3);
+  text-align: left; padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mb-results-tbl td { padding: 5px 8px; border-bottom: 1px solid #f0f2f5; font-size: 11px; }
+.mb-results-tbl tr:last-child td { border-bottom: none; }
+.mb-results-tbl tr:hover td { background: #f8f9fb; }
+
+/* ── Stats ── */
+.mb-stats-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.mb-stat {
+  background: #f0f2f5; border-radius: 5px;
+  padding: 3px 8px; font-size: 10px; color: var(--text2);
+  display: flex; gap: 4px; align-items: center;
+}
+.mb-stat span { font-weight: 600; color: var(--text); }
+
+/* ── Write history ── */
+.mb-write-hist {
+  background: #f8f9fb; border: 1px solid var(--border);
+  border-radius: 5px; padding: 6px 8px;
+  height: 120px; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 3px;
+}
+
+.mb-wh-item {
+  display: flex; align-items: center; gap: 8px; font-size: 11px;
+}
+.mb-wh-item.ok  { color: var(--text); }
+.mb-wh-item.err { color: var(--red); }
+.mb-wh-ts       { font-size: 9px; color: var(--text3); width: 60px; flex-shrink: 0; }
+.mb-wh-addr     { font-family: monospace; font-size: 10px; color: var(--blue); }
+.mb-wh-val      { font-size: 11px; font-weight: 500; }
+.mb-wh-status   { font-size: 10px; margin-left: auto; }
+.mb-wh-item.ok  .mb-wh-status { color: var(--green); }
+.mb-wh-item.err .mb-wh-status { color: var(--red); }

@@ -1,0 +1,309 @@
+/* ═══════════════════════════════════════════════════
+   Synkro Dev Tools — Global Styles
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --bg:        #f2f4f7;
+  --card:      #ffffff;
+  --header:    #0d1f35;
+  --accent:    #FF6B00;
+  --blue:      #0066FF;
+  --green:     #16a34a;
+  --red:       #dc2626;
+  --yellow:    #d97706;
+  --purple:    #7c3aed;
+  --cyan:      #0891b2;
+  --border:    #dde1e8;
+  --text:      #1a2535;
+  --text2:     #5a6a7a;
+  --text3:     #9aaabb;
+  --radius:    8px;
+  --shadow:    0 1px 4px rgba(0,0,0,0.09);
+  --font:      -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.app-header {
+  background: var(--header);
+  border-bottom: 3px solid var(--accent);
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.header-brand {
+  display: flex; align-items: center; gap: 10px;
+  padding-right: 16px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+.logo-box {
+  width: 34px; height: 34px;
+  background: var(--accent); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 16px; color: #fff;
+}
+
+.brand-text { display: flex; flex-direction: column; }
+.brand-name { font-size: 13px; font-weight: 700; color: #fff; }
+.brand-sub  { font-size: 9px; color: #6a8aaa; letter-spacing: 0.5px; text-transform: uppercase; }
+
+/* ── Tabs ── */
+.header-tabs {
+  display: flex; align-items: flex-end;
+  padding: 0 4px; gap: 2px; flex: 1;
+}
+
+.htab {
+  padding: 8px 16px; font-size: 12px; font-weight: 500;
+  color: #6a8aaa; border-radius: 6px 6px 0 0;
+  cursor: pointer; border: 1px solid transparent;
+  border-bottom: none; background: transparent;
+  display: flex; align-items: center; gap: 6px;
+  position: relative; top: 3px;
+  font-family: var(--font);
+}
+
+.htab:hover  { color: #a0c0d8; }
+.htab.active {
+  background: var(--bg); color: var(--text);
+  border-color: var(--border); border-bottom-color: var(--bg);
+  font-weight: 600;
+}
+
+/* ── Header controls ── */
+.header-controls {
+  display: flex; align-items: center; gap: 8px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+
+/* ── Main content ── */
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.tab-panel {
+  display: none;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.tab-panel.active { display: flex; flex-direction: column; }
+
+/* ── Common cards ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card-hdr {
+  padding: 8px 12px;
+  background: #fafbfc;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px; font-weight: 600;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.card-body { padding: 12px; }
+
+/* ── Common badges ── */
+.srv-badge {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px; padding: 3px 10px;
+  font-size: 10px; color: #c8d8e8;
+}
+
+.sdot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.sdot.on    { background: var(--green); box-shadow: 0 0 5px #16a34a88; }
+.sdot.off   { background: #4a5a6a; }
+.sdot.err   { background: var(--red); }
+.sdot.pulse { animation: sdot-pulse 1.5s infinite; }
+@keyframes sdot-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ── Common buttons ── */
+.hbtn {
+  padding: 5px 12px; border-radius: 5px;
+  font-size: 11px; font-weight: 600;
+  border: none; cursor: pointer;
+  font-family: var(--font);
+}
+.hbtn.start  { background: var(--green); color: #fff; }
+.hbtn.stop   { background: var(--red);   color: #fff; }
+.hbtn.save   { background: rgba(255,255,255,0.1); color: #c8d8e8; border: 1px solid rgba(255,255,255,0.15); }
+.hbtn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn {
+  padding: 4px 10px; border-radius: 4px;
+  font-size: 11px; font-weight: 600;
+  border: none; cursor: pointer;
+  font-family: var(--font);
+}
+.btn-primary  { background: var(--blue);   color: #fff; }
+.btn-success  { background: var(--green);  color: #fff; }
+.btn-danger   { background: var(--red);    color: #fff; }
+.btn-warning  { background: var(--yellow); color: #fff; }
+.btn-ghost    { background: #f0f2f5; color: var(--text2); border: 1px solid var(--border); }
+.btn-ghost:hover { background: #e4e8ee; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Form fields ── */
+.f-row {
+  display: flex; align-items: center;
+  gap: 8px; margin-bottom: 8px;
+}
+.f-row:last-child { margin-bottom: 0; }
+
+.f-lbl { font-size: 10px; color: var(--text2); width: 72px; flex-shrink: 0; }
+
+.f-inp {
+  flex: 1; border: 1px solid var(--border);
+  border-radius: 4px; padding: 5px 8px;
+  font-size: 12px; color: var(--text); background: #fff;
+  font-family: var(--font);
+}
+.f-inp:focus { outline: none; border-color: var(--blue); }
+.f-inp.err   { border-color: var(--red); background: #fff8f8; }
+
+.f-sel {
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 5px 6px; font-size: 11px;
+  color: var(--text); background: #fff;
+  font-family: var(--font);
+}
+
+/* ── Toggle switch ── */
+.toggle { position: relative; width: 32px; height: 17px; cursor: pointer; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+.trk { position: absolute; inset: 0; border-radius: 17px; background: #d0d4dc; transition: background 0.2s; }
+.trk.on { background: var(--green); }
+.trk.accent.on { background: var(--accent); }
+.tth { position: absolute; top: 2px; left: 2px; width: 13px; height: 13px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: left 0.15s; }
+.trk.on .tth { left: 17px; }
+
+/* ── Type badges ── */
+.tb { font-size: 9px; font-weight: 600; padding: 2px 6px; border-radius: 10px; display: inline-block; }
+.tb-i16  { background: #eff6ff; color: #1d4ed8; }
+.tb-f32  { background: #fef9ee; color: #b45309; }
+.tb-d32  { background: #f5f3ff; color: #7c3aed; }
+.tb-bool { background: #f0fdf4; color: #15803d; }
+.tb-str  { background: #ecfeff; color: #0891b2; }
+
+/* ── Log box ── */
+.log-wrap { background: #0d1f35; border-radius: 6px; overflow: hidden; }
+.log-hdr  {
+  background: #0a1828; padding: 5px 12px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid #1a3050;
+}
+.log-title { font-size: 10px; font-weight: 600; color: #4a8aaa; text-transform: uppercase; letter-spacing: 0.5px; }
+.log-count { background: #1a3050; color: #4a8aaa; font-size: 9px; padding: 1px 6px; border-radius: 10px; }
+.log-clear { margin-left: auto; background: none; border: none; color: #4a6a8a; font-size: 10px; cursor: pointer; }
+.log-body  {
+  padding: 8px 12px; font-family: 'Consolas', monospace;
+  font-size: 10px; color: #7aabcf; overflow-y: auto;
+  line-height: 1.7;
+}
+.log-ts   { color: #3a5a7a; }
+.log-ok   { color: #4ade80; }
+.log-err  { color: #f87171; }
+.log-conn { color: #fbbf24; }
+.log-rw   { color: #fbbf24; }
+.log-pub  { color: #4ade80; }
+.log-wr   { color: #c084fc; }
+
+/* ── Info bar ── */
+.info-bar {
+  background: #eef4ff; border-bottom: 1px solid #c8d8f0;
+  padding: 7px 16px; font-size: 11px; color: #3a5a8a;
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+.info-hint {
+  margin-left: auto; display: flex; align-items: center;
+  gap: 6px; font-weight: 600; color: #1a4a7a;
+}
+.copy-btn {
+  background: #dce8ff; border: none; border-radius: 4px;
+  padding: 2px 7px; font-size: 10px; color: #1a4a7a;
+  cursor: pointer; font-family: var(--font);
+}
+.copy-btn:hover { background: #c8d8f8; }
+
+/* ── Validation banner ── */
+.val-banner {
+  border-radius: 6px; padding: 7px 12px;
+  font-size: 11px; display: flex; align-items: center;
+  gap: 8px; margin: 10px 16px 0;
+}
+.val-banner.warn { background: #fff7ed; border: 1px solid #fed7aa; color: #c2410c; }
+.val-banner.err  { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; }
+.val-banner.ok   { background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+
+/* ── App footer ── */
+.app-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 16px; background: #fff;
+  border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--text2);
+  flex-shrink: 0;
+}
+.footer-filename { color: var(--text3); }
+.footer-modified { color: var(--yellow); }
+.footer-saved    { color: var(--green); }
+.footer-btns { display: flex; gap: 6px; }
+.fbtn {
+  padding: 4px 10px; border-radius: 5px; font-size: 11px;
+  cursor: pointer; border: 1px solid var(--border);
+  background: #fff; color: var(--text2);
+  font-family: var(--font);
+}
+.fbtn:hover { background: #f4f5f7; }
+.fbtn.primary   { background: var(--blue);  color: #fff; border-color: var(--blue); }
+.fbtn.danger    { color: var(--red); border-color: #fca5a5; }
+.fbtn.start-sim { background: #f0fdf4; color: var(--green); border-color: #bbf7d0; }
+.fbtn:disabled  { opacity: 0.4; cursor: not-allowed; }
+
+/* ── Bind mode toggle ── */
+.bind-toggle { display: flex; gap: 3px; background: #f0f2f5; border-radius: 6px; padding: 3px; }
+.bind-opt {
+  padding: 4px 10px; border-radius: 4px; font-size: 11px;
+  font-weight: 500; color: var(--text2); cursor: pointer;
+  border: none; background: transparent; font-family: var(--font);
+}
+.bind-opt.active { background: #fff; color: var(--blue); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c0cad4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a0aab4; }

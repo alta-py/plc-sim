@@ -1,0 +1,57 @@
+{
+  "name": "synkro-dev-tools",
+  "version": "1.0.0",
+  "description": "Synkro Dev Tools — PLC Simulator + Modbus Tester + IoT Simulator",
+  "main": "electron/main.js",
+  "author": "Alta Ingeniería SRL",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start":     "electron .",
+    "dev":       "electron .",
+    "build:win": "electron-builder --win",
+    "build:all": "electron-builder --win --publish never"
+  },
+  "dependencies": {
+    "jsmodbus":         "^4.0.6",
+    "mqtt":             "^5.3.4",
+    "electron-store":   "^8.1.0"
+  },
+  "devDependencies": {
+    "electron":         "^29.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId":       "com.altaingenieria.synkro-dev-tools",
+    "productName": "Synkro Dev Tools",
+    "copyright":   "Alta Ingeniería SRL",
+    "icon":        "ui/assets/icon.ico",
+    "win": {
+      "target": [
+        { "target": "nsis",     "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick":          false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName":      "Synkro Dev Tools",
+      "installerIcon":     "ui/assets/icon.ico",
+      "uninstallerIcon":   "ui/assets/icon.ico"
+    },
+    "portable": {
+      "artifactName": "SynkroDevTools-${version}-portable.exe"
+    },
+    "extraResources": [
+      { "from": "data/", "to": "data/", "filter": ["**/*"] }
+    ],
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "ui/**/*",
+      "package.json"
+    ]
+  }
+}
