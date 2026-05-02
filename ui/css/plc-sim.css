@@ -3,12 +3,13 @@
    ═══════════════════════════════════════════════════ */
 
 .plc-main {
-  padding: 12px 14px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   flex: 1;
   overflow-y: auto;
+  min-height: 0;
 }
 
 /* ── Section ── */
@@ -21,10 +22,10 @@
 }
 
 .plc-sec-hdr {
-  padding: 8px 12px;
-  background: #fafbfc;
+  padding: 5px 10px;
+  background: var(--card);
   border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 7px;
 }
 
 .plc-sec-icon {
@@ -45,11 +46,13 @@
 
 .plc-sec-hdr-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 
-.plc-sec-body   { padding: 10px 12px; }
+.plc-sec-body   { padding: 8px 10px; overflow-y: auto; max-height: 210px; }
+.plc-sec-body.bits { max-height: 160px; }
 
 .plc-sec-footer {
-  padding: 7px 12px; border-top: 1px solid #f0f2f5;
-  display: flex; gap: 6px; align-items: center;
+  padding: 5px 10px; border-top: 1px solid var(--border);
+  display: flex; gap: 5px; align-items: center;
+  background: var(--card);
 }
 
 .plc-max-hint { margin-left: auto; font-size: 10px; color: var(--text3); }
@@ -57,39 +60,48 @@
 /* ── Bits grid ── */
 .plc-bits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 5px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
 }
 
 .plc-bit-row {
-  display: flex; align-items: center; gap: 7px;
-  padding: 5px 8px; background: #f8f9fb;
-  border: 1px solid var(--border); border-radius: 5px;
+  display: flex; align-items: center; gap: 4px;
+  padding: 3px 5px; background: #f8f9fb;
+  border: 1px solid var(--border); border-radius: 3px;
   border-left: 3px solid var(--green);
+  min-width: 0; overflow: hidden;
 }
 .plc-bit-row.err { border-left-color: var(--red); background: #fff8f8; }
 
 .plc-bit-addr {
-  font-family: monospace; font-size: 10px; color: var(--text2);
-  width: 44px; flex-shrink: 0;
+  font-family: var(--mono); font-size: 9px; color: var(--text3);
+  width: 32px; flex-shrink: 0;
 }
 .plc-bit-addr.err { color: var(--red); }
 
 .plc-bit-label {
-  flex: 1; border: none; background: transparent;
-  font-size: 11px; color: var(--text); outline: none;
+  width: 38px; flex-shrink: 0; min-width: 0;
+  border: none; background: transparent;
+  font-size: 11px; font-weight: 600; color: var(--text); outline: none;
   border-bottom: 1px solid transparent;
 }
 .plc-bit-label:focus { border-bottom-color: var(--blue); }
 
 .plc-rw-sel {
-  font-size: 9px; border: 1px solid var(--border); border-radius: 3px;
-  background: #fff; color: var(--text2); padding: 1px 3px; width: 38px;
+  font-size: 9px; border: 1px solid var(--border); border-radius: 2px;
+  background: #fff; color: var(--text2); padding: 1px 1px; width: 30px;
+  flex-shrink: 0;
 }
 
-.plc-bit-val { font-size: 10px; font-weight: 700; width: 26px; text-align: center; flex-shrink: 0; }
+.plc-bit-val { font-size: 10px; font-weight: 700; width: 22px; text-align: center; flex-shrink: 0; }
 .plc-bit-val.on  { color: var(--green); }
 .plc-bit-val.off { color: var(--text3); }
+
+/* Bit toggle — override global size para que entre en la celda */
+.plc-bit-row .toggle { width: 28px; height: 15px; flex-shrink: 0; }
+.plc-bit-row .trk    { border-radius: 2px; }
+.plc-bit-row .tth    { width: 11px; height: 11px; top: 2px; left: 2px; border-radius: 1px; }
+.plc-bit-row .trk.on .tth { left: 15px; }
 
 /* ── Register table ── */
 .plc-reg-tbl { width: 100%; border-collapse: collapse; }

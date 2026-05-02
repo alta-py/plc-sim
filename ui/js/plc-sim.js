@@ -12,7 +12,7 @@ const PLCSIM = (() => {
     errors:    []
   };
 
-  const DEFAULT_BITS = Array.from({ length: 5 }, (_, i) => ({
+  const DEFAULT_BITS = Array.from({ length: 30 }, (_, i) => ({
     id:      `b${i}`,
     address: String(i + 1).padStart(5, '0'),
     label:   `M${i}`,
@@ -43,7 +43,7 @@ const PLCSIM = (() => {
   let regs = JSON.parse(JSON.stringify(DEFAULT_REGS));
   let sigs = JSON.parse(JSON.stringify(DEFAULT_SIGS));
 
-  const MAX_BITS = 20;
+  const MAX_BITS = 30;
   const MAX_REGS = 20;
   const MAX_SIGS = 10;
 
@@ -111,12 +111,8 @@ const PLCSIM = (() => {
             <span class="plc-sec-sub">— Coils · ON / OFF manual</span>
             <span class="plc-sec-count" id="plcBitsCount">5/20</span>
           </div>
-          <div class="plc-sec-body">
+          <div class="plc-sec-body bits">
             <div class="plc-bits-grid" id="plcBitsGrid"></div>
-          </div>
-          <div class="plc-sec-footer">
-            <button class="btn btn-ghost" id="plcAddBit">+ Agregar bit</button>
-            <span class="plc-max-hint">Máx. ${MAX_BITS} bits</span>
           </div>
         </div>
 
@@ -225,14 +221,6 @@ const PLCSIM = (() => {
       window.utils.copyText(hint.replace(/ /g, ''), e.currentTarget);
     });
 
-    document.getElementById('plcAddBit').addEventListener('click', () => {
-      if (bits.length >= MAX_BITS) return;
-      const lastAddr = bits.length ? parseInt(bits[bits.length - 1].address) + 1 : 1;
-      bits.push({ id: `b${Date.now()}`, address: String(lastAddr).padStart(5,'0'), label: `M${bits.length}`, value: false, access: 'rw', enabled: true });
-      _renderBits();
-      _validate();
-    });
-
     document.getElementById('plcAddReg').addEventListener('click', () => {
       if (regs.length >= MAX_REGS) return;
       const last = regs[regs.length - 1];
@@ -280,7 +268,8 @@ const PLCSIM = (() => {
 
   function _renderBits() {
     const grid = document.getElementById('plcBitsGrid');
-    grid.innerHTML = bits.map(b => `
+    const sorted = [...bits].sort((a, b) => parseInt(a.address) - parseInt(b.address));
+    grid.innerHTML = sorted.map(b => `
       <div class="plc-bit-row ${b._err ? 'err' : 'ok'}" data-id="${b.id}">
         <span class="plc-bit-addr ${b._err ? 'err' : ''}">${b.address}</span>
         <input class="plc-bit-label" value="${window.utils.esc(b.label)}"
@@ -296,9 +285,6 @@ const PLCSIM = (() => {
         </div>
       </div>
     `).join('');
-
-    const addBtn = document.getElementById('plcAddBit');
-    if (addBtn) addBtn.disabled = bits.length >= MAX_BITS;
 
     const count = document.getElementById('plcBitsCount');
     if (count) count.textContent = `${bits.length}/${MAX_BITS}`;
@@ -649,32 +635,25 @@ const PLCSIM = (() => {
         <div class="sdot off" id="plcHdrDot"></div>
         <span id="plcHdrLabel">Detenido</span>
       </div>
-      <div class="srv-badge" id="plcHdrClients">Clients: 0</div>
-      <div class="srv-badge">:502</div>
-      <button class="hbtn start" id="plcHdrBtn">▶ Iniciar</button>
+      <div class="srv-badge" id="plcHdrClients">0 clientes</div>
+      <div class="srv-badge" id="plcHdrPort">:502</div>
     `;
-    document.getElementById('plcHdrBtn').addEventListener('click', _toggleServer);
   }
 
   function _updateHeaderControls() {
     const dot     = document.getElementById('plcHdrDot');
     const label   = document.getElementById('plcHdrLabel');
-    const btn     = document.getElementById('plcHdrBtn');
     const clients = document.getElementById('plcHdrClients');
     if (!dot) return;
 
     if (state.running) {
       dot.className     = 'sdot on pulse';
-      label.textContent = 'Running';
-      btn.textContent   = '■ Stop';
-      btn.className     = 'hbtn stop';
+      label.textContent = 'Servidor activo';
     } else {
       dot.className     = 'sdot off';
-      label.textContent = 'Stopped';
-      btn.textContent   = '▶ Iniciar';
-      btn.className     = 'hbtn start';
+      label.textContent = 'Detenido';
     }
-    if (clients) clients.textContent = `Clients: ${state.clients}`;
+    if (clients) clients.textContent = `${state.clients} clientes`;
   }
 
   // ─────────────────────────────────────────────

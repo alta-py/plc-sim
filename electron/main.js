@@ -15,10 +15,10 @@ let mainWindow = null;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width:  1280,
-    height: 820,
-    minWidth:  900,
-    minHeight: 640,
+    width:  1160,
+    height: 900,
+    resizable:   false,
+    maximizable: false,
     title: 'Synkro Dev Tools',
     icon: path.join(__dirname, '../ui/assets/icon.ico'),
     webPreferences: {
